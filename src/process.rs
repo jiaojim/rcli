@@ -21,7 +21,5 @@ pub fn process_csv(input: &str, output: &str) -> anyhow::Result<()>{
 
     let json = serde_json::to_string_pretty(&records)?;
     fs::write(output,json)?;
-
-    println!("{:?}",records);
     Ok(())
 }
