@@ -15,9 +15,10 @@ struct Player {
 
 pub fn process_csv(input: &str, output: &str) -> anyhow::Result<()> {
     let mut rdr = csv::Reader::from_path(input)?;
-    let records = rdr.deserialize().
-        map(|record| { record.unwrap() }).
-        collect::<Vec<Player>>();
+    let records = rdr
+        .deserialize()
+        .map(|record| record.unwrap())
+        .collect::<Vec<Player>>();
 
     let json = serde_json::to_string_pretty(&records)?;
     fs::write(output, json)?;
