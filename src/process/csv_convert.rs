@@ -1,9 +1,8 @@
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use std::{fs};
+use std::fs;
 
 use crate::opts::OutputFormat;
-
 
 #[derive(Debug, Deserialize, Serialize)]
 #[serde(rename_all = "PascalCase")]
@@ -29,7 +28,7 @@ pub fn process_csv(input: &str, output: String, format: OutputFormat) -> anyhow:
 
     let content = match format {
         OutputFormat::JSON => serde_json::to_string_pretty(&ret)?,
-        OutputFormat::YAML => serde_yaml::to_string(&ret)?
+        OutputFormat::YAML => serde_yaml::to_string(&ret)?,
     };
     fs::write(output, content)?;
     Ok(())
