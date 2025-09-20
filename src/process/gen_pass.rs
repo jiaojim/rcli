@@ -48,6 +48,6 @@ pub fn process_genpass(
 
     println!("{}", password);
     let estimate = zxcvbn(&password, &[]);
-    println!("Password strength: {}", estimate.score()); // 3
+    eprintln!("Password strength: {}", estimate.score()); // 3
     Ok(())
 }
